@@ -1,9 +1,9 @@
+import 'package:affirmations_app/ui/pages/home/home_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../features/home/pages/home_page.dart';
 import 'route_names.dart';
 import 'route_paths.dart';
 

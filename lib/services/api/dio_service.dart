@@ -1,11 +1,8 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../constants/endpoints.dart';
-import '../../models/api_error/api_error.dart';
-import '../../providers/services_providers.dart';
+import 'package:affirmations_app/models/api_error/api_error.dart';
+import 'package:affirmations_app/providers/services_providers.dart';
 
 enum HttpMethod {
   get,
@@ -18,27 +15,15 @@ enum HttpMethod {
 class DioService {
   DioService(this.ref) {
     dio = Dio();
-    //dio.options.baseUrl = AppEndpoints.;
-    // dio.options.sendTimeout = 30000;
-    // dio.options.connectTimeout = 30000;
-    // dio.options.receiveTimeout = 30000;
 
-    dio.interceptors.add(LogInterceptor(
-      requestBody: true,
-      responseBody: true,
-    ));
+    // dio.interceptors.add(LogInterceptor(
+    //   requestBody: true,
+    //   responseBody: true,
+    // ));
   }
-
-  ///
-  /// VARIABLES
-  ///
 
   final ProviderRef ref;
   late final Dio dio;
-
-  ///
-  /// METHODS
-  ///
 
   Future<T> request<T>({
     required String url,

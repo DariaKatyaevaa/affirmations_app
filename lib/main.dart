@@ -1,11 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'providers/locale_provider.dart';
-import 'providers/providers_logger.dart';
 import 'providers/services_providers.dart';
 import 'router/app_router.dart';
 import 'services/device_info/device_info_service.dart';
@@ -34,7 +32,7 @@ Future<void> main() async {
   /// Run the `AffirmationsApp` app
   runApp(
     ProviderScope(
-      observers: [ProvidersLogger()],
+      //observers: [ProvidersLogger()],
       overrides: [
         //storageServiceProvider.overrideWithValue(hiveStorageService),
         deviceInfoServiceProvider.overrideWithValue(deviceInfoService),
@@ -56,25 +54,21 @@ class AffirmationsApp extends StatelessWidget {
   AppRouter? router;
 
   @override
-  Widget build(BuildContext context) => ScreenUtilInit(
-        /// Size of the device the designer uses in their designs on Figma
-        designSize: const Size(412, 732),
-        builder: (_, __) => Consumer(
-          builder: (context, ref, child) {
-            router ??= AppRouter(ref);
+  Widget build(BuildContext context) => Consumer(
+        builder: (context, ref, child) {
+          router ??= AppRouter(ref);
 
-            return MaterialApp.router(
-              onGenerateTitle: (_) => 'appName'.tr(),
-              debugShowCheckedModeBanner: false,
-              routerDelegate: router!.appRouter.routerDelegate,
-              routeInformationParser: router!.appRouter.routeInformationParser,
-              routeInformationProvider: router!.appRouter.routeInformationProvider,
-              theme: AppThemes.primary(),
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: ref.watch(localeProvider).toLocale(),
-            );
-          },
-        ),
+          return MaterialApp.router(
+            onGenerateTitle: (_) => 'appName'.tr(),
+            debugShowCheckedModeBanner: false,
+            routerDelegate: router!.appRouter.routerDelegate,
+            routeInformationParser: router!.appRouter.routeInformationParser,
+            routeInformationProvider: router!.appRouter.routeInformationProvider,
+            theme: AppThemes.primary(),
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: ref.watch(localeProvider).toLocale(),
+          );
+        },
       );
 }

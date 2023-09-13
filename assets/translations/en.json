@@ -1,4 +1,17 @@
 {
-    "appName": "Riverpod Template",
-    "noPoster": "No poster"
+  "appName": "Affirmation",
+  "category": "Category",
+  "affirmationsType": "Affirmations and advices",
+  "quotesType": "Quotes",
+  "sounds": "Sounds",
+  "rain": "Rain",
+  "forest": "Forest",
+  "nightSounds": "Night sounds",
+  "relax": "Relax",
+  "chooseTheme": "Choose theme",
+  "gradient": "Gradient",
+  "nature": "Nature",
+  "sky": "Sky",
+  "myProfile": "My profile",
+  "favoriteAffirmations": "Favorite affirmations"
 }
