@@ -8,11 +8,34 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-          Text('myProfile'.tr()),
-          ListTile(title: Text('favoriteAffirmations'.tr())),
+      appBar: AppBar(
+        elevation: 0,
+        title: Text(
+          'myProfile'.tr(),
+          style: TextStyle(fontSize: 24.0),
+        ),
+        backgroundColor: Colors.transparent,
+      ),
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.white,
+      body: CupertinoListSection.insetGrouped(
+        header: Container(
+            padding: EdgeInsets.only(top: 100),
+            child: const Text(
+              '',
+              style: TextStyle(fontSize: 32),
+            )),
+        children: <CupertinoListTile>[
+          CupertinoListTile.notched(
+            title: Text('favoriteAffirmations'.tr()),
+            leading: Icon(CupertinoIcons.heart),
+            trailing: const CupertinoListTileChevron(),
+          ),
+          CupertinoListTile.notched(
+            title: Text('myAffirmations'.tr()),
+            leading: Icon(CupertinoIcons.smiley),
+            trailing: const CupertinoListTileChevron(),
+          ),
         ],
       ),
     );

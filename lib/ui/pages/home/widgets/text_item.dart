@@ -65,7 +65,7 @@ class _TextItemState extends State<TextItem> {
                 width: 10,
               ),
               GestureDetector(
-                onTap: () {},
+                onTapDown: (details) => _showPopUpMenu(details.globalPosition),
                 child: Icon(
                   Icons.pending_outlined,
                   size: 32.0,
@@ -76,6 +76,26 @@ class _TextItemState extends State<TextItem> {
           )
         ],
       ),
+    );
+  }
+
+  Future<void> _showPopUpMenu(Offset offset) async {
+    final left = offset.dx;
+    final top = offset.dy;
+    await showMenu(
+      context: context,
+      position: RelativeRect.fromLTRB(left, top, left + 1, top + 1),
+      items: [
+        PopupMenuItem<String>(
+          child: const Text('Doge'),
+          //value: 'Doge',
+        ),
+        PopupMenuItem<String>(
+          child: const Text('Lion'),
+          //value: 'Lion',
+        ),
+      ],
+      elevation: 8.0,
     );
   }
 }
