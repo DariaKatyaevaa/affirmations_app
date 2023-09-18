@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 import 'providers/locale_provider.dart';
 import 'providers/services_providers.dart';
@@ -12,28 +11,18 @@ import 'services/storage/hive_storage_service.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  /// Initialize EasyLocalization
   await EasyLocalization.ensureInitialized();
 
-  /// Initialize Hive
-  // await Hive.initFlutter();
-  // final hiveStorageService = HiveStorageService();
-  // await hiveStorageService.openBox('');
+  final hiveStorageService = HiveStorageService();
+  await hiveStorageService.init();
 
   final deviceInfoService = DeviceInfoService();
   await deviceInfoService.initProperInfo();
 
-  /// Initialize Firebase
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
-
-  /// Run the `AffirmationsApp` app
   runApp(
     ProviderScope(
-      //observers: [ProvidersLogger()],
       overrides: [
-        //storageServiceProvider.overrideWithValue(hiveStorageService),
+        storageServiceProvider.overrideWithValue(hiveStorageService),
         deviceInfoServiceProvider.overrideWithValue(deviceInfoService),
       ],
       child: EasyLocalization(

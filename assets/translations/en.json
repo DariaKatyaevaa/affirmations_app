@@ -14,5 +14,13 @@
   "sky": "Sky",
   "myProfile": "My profile",
   "favoriteAffirmations": "Favorite affirmations",
-  "myAffirmations": "My affirmations"
+  "favoriteQuotes": "Favorite quotes",
+  "myAffirmations": "My affirmations",
+  "addAffirmation": "Add affirmation",
+  "share": "Share",
+  "removeFromFavorites" : "Remove from favorites",
+  "add": "add",
+  "cancel": "Cancel",
+  "save": "Save",
+  "enterYourAffirmation": "Enter your affirmation:"
 }

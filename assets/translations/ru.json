@@ -14,5 +14,14 @@
   "sky": "Небо",
   "myProfile": "Мой профиль",
   "favoriteAffirmations": "Избранные аффирмации",
-  "myAffirmations": "Мои аффирмации"
+  "favoriteQuotes": "Избранные цитаты",
+  "myAffirmations": "Мои аффирмации",
+  "addAffirmation": "Добавить аффирмацию",
+  "share": "Поделиться",
+  "removeFromFavorites": "Удалить из избранного",
+  "add": "Добавить",
+  "cancel": "Отменить",
+  "save": "Сохранить",
+  "enterYourAffirmation": "Введите свою аффирмацию:"
+}
 }

@@ -1,4 +1,5 @@
-import 'package:affirmations_app/ui/pages/home/widgets/text_item.dart';
+import 'package:affirmations_app/ui/pages/home/widgets/affirmation_item.dart';
+import 'package:affirmations_app/ui/pages/home/widgets/quote_item.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:affirmations_app/models/text_type/text_type.dart';
@@ -23,16 +24,15 @@ class MainTextPageView extends HookConsumerWidget {
       itemBuilder: (context, index) => textType == TextType.affirmation
           ? affirmation.maybeWhen(
               orElse: () => WhiteProgressIndicator(),
-              data: (data) => TextItem(
-                text: data.text,
+              data: (data) => AffirmationItem(
+                affirmation: data,
                 textColor: themeType.textColor,
               ),
             )
           : quote.maybeWhen(
               orElse: () => WhiteProgressIndicator(),
-              data: (data) => TextItem(
-                text: data.text,
-                author: data.author,
+              data: (data) => QuoteItem(
+                quote: data,
                 textColor: themeType.textColor,
               ),
             ),

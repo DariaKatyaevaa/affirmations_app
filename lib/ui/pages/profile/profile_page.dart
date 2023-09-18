@@ -1,3 +1,4 @@
+import 'package:affirmations_app/ui/pages/favorites/favorites_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.transparent,
       ),
       extendBodyBehindAppBar: true,
-      backgroundColor: Colors.white,
+      //backgroundColor: Colors.white,
       body: CupertinoListSection.insetGrouped(
         header: Container(
             padding: EdgeInsets.only(top: 100),
@@ -30,13 +31,29 @@ class ProfilePage extends StatelessWidget {
             title: Text('favoriteAffirmations'.tr()),
             leading: Icon(CupertinoIcons.heart),
             trailing: const CupertinoListTileChevron(),
+            onTap: () => _goToFavorites(context, FavoritesType.affirmations),
+          ),
+          CupertinoListTile.notched(
+            title: Text('favoriteQuotes'.tr()),
+            leading: Icon(CupertinoIcons.bookmark),
+            trailing: const CupertinoListTileChevron(),
+            onTap: () => _goToFavorites(context, FavoritesType.quotes),
           ),
           CupertinoListTile.notched(
             title: Text('myAffirmations'.tr()),
             leading: Icon(CupertinoIcons.smiley),
             trailing: const CupertinoListTileChevron(),
+            onTap: () => _goToFavorites(context, FavoritesType.user),
           ),
         ],
+      ),
+    );
+  }
+
+  void _goToFavorites(BuildContext context, FavoritesType type) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context) => FavoritesPage(favoritesType: type),
       ),
     );
   }

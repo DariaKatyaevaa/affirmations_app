@@ -10,7 +10,11 @@ final localeProvider = StateNotifierProvider<LocaleNotifier, String>(
     late String initialLocale;
 
     try {
-      initialLocale = storageService.getValue(StorageKeys.currentLocale) ?? Platform.localeName.substring(0, 2);
+      initialLocale = storageService.get(
+            StorageKeys.currentLocale,
+            boxName: StorageBoxNames.settingsBox,
+          ) ??
+          Platform.localeName.substring(0, 2);
     } catch (e) {
       log('Error setting initial locale: $e');
       initialLocale = 'en';
@@ -32,9 +36,10 @@ class LocaleNotifier extends StateNotifier<String> {
 
   void setLocale(String localeCode) {
     state = localeCode;
-    storageServiceProvider.setValue(
+    storageServiceProvider.set(
       key: StorageKeys.currentLocale,
       data: localeCode,
+      boxName: StorageBoxNames.settingsBox,
     );
   }
 }

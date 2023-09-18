@@ -21,8 +21,10 @@ Quote _$QuoteFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Quote {
   @JsonKey(name: 'quoteText')
+  @HiveField(0)
   String get text => throw _privateConstructorUsedError;
   @JsonKey(name: 'quoteAuthor')
+  @HiveField(1)
   String get author => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,8 +38,8 @@ abstract class $QuoteCopyWith<$Res> {
       _$QuoteCopyWithImpl<$Res, Quote>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'quoteText') String text,
-      @JsonKey(name: 'quoteAuthor') String author});
+      {@JsonKey(name: 'quoteText') @HiveField(0) String text,
+      @JsonKey(name: 'quoteAuthor') @HiveField(1) String author});
 }
 
 /// @nodoc
@@ -76,8 +78,8 @@ abstract class _$$_QuoteCopyWith<$Res> implements $QuoteCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'quoteText') String text,
-      @JsonKey(name: 'quoteAuthor') String author});
+      {@JsonKey(name: 'quoteText') @HiveField(0) String text,
+      @JsonKey(name: 'quoteAuthor') @HiveField(1) String author});
 }
 
 /// @nodoc
@@ -107,19 +109,23 @@ class __$$_QuoteCopyWithImpl<$Res> extends _$QuoteCopyWithImpl<$Res, _$_Quote>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Quote implements _Quote {
+@HiveType(typeId: 1, adapterName: 'QuoteAdapter')
+class _$_Quote extends _Quote {
   _$_Quote(
-      {@JsonKey(name: 'quoteText') required this.text,
-      @JsonKey(name: 'quoteAuthor') required this.author});
+      {@JsonKey(name: 'quoteText') @HiveField(0) required this.text,
+      @JsonKey(name: 'quoteAuthor') @HiveField(1) required this.author})
+      : super._();
 
   factory _$_Quote.fromJson(Map<String, dynamic> json) =>
       _$$_QuoteFromJson(json);
 
   @override
   @JsonKey(name: 'quoteText')
+  @HiveField(0)
   final String text;
   @override
   @JsonKey(name: 'quoteAuthor')
+  @HiveField(1)
   final String author;
 
   @override
@@ -154,18 +160,23 @@ class _$_Quote implements _Quote {
   }
 }
 
-abstract class _Quote implements Quote {
+abstract class _Quote extends Quote {
   factory _Quote(
-      {@JsonKey(name: 'quoteText') required final String text,
-      @JsonKey(name: 'quoteAuthor') required final String author}) = _$_Quote;
+      {@JsonKey(name: 'quoteText') @HiveField(0) required final String text,
+      @JsonKey(name: 'quoteAuthor')
+      @HiveField(1)
+      required final String author}) = _$_Quote;
+  _Quote._() : super._();
 
   factory _Quote.fromJson(Map<String, dynamic> json) = _$_Quote.fromJson;
 
   @override
   @JsonKey(name: 'quoteText')
+  @HiveField(0)
   String get text;
   @override
   @JsonKey(name: 'quoteAuthor')
+  @HiveField(1)
   String get author;
   @override
   @JsonKey(ignore: true)

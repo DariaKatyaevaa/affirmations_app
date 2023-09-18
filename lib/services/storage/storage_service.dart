@@ -1,23 +1,34 @@
 class StorageKeys {
   static const String currentLocale = 'current_locale';
+  static const String soundType = 'sound_type';
+  static const String themeType = 'theme_type';
+  static const String textType = 'text_type';
+  static const String list = 'list';
+}
+
+class StorageBoxNames {
+  static const String settingsBox = 'settings';
+  static const String favoriteAffirmations = 'favorite_affirmations';
+  static const String favoriteQuotes = 'favorite_quotes';
+  static const String myAffirmations = 'my_affirmations';
 }
 
 abstract class StorageService {
-  /// Delete value by key
-  Future<void> deleteValue(String key);
+  Future<void> init();
 
-  /// Get value by key
-  dynamic getValue(String key);
+  Future<void> remove({required int index, required String boxName});
 
-  /// Get all keys and values
-  dynamic getAll();
+  dynamic get(String key, {required String boxName});
 
-  /// Clear storage
+  List<dynamic> getAll({required String boxName});
+
   Future<void> clear();
 
-  /// Check if key has value
-  bool hasValue(String key);
+  Future<void> clearBox({required String boxName});
 
-  /// Store new value
-  Future<void> setValue({String key, data});
+  bool has(String key, {required String boxName});
+
+  Future<void> set({String? key, required dynamic data, required String boxName});
+
+  Future<void> add({required dynamic data, required String boxName});
 }

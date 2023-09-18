@@ -21,8 +21,10 @@ Affirmation _$AffirmationFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Affirmation {
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'advice')
+  @HiveField(1)
   String get text => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +40,8 @@ abstract class $AffirmationCopyWith<$Res> {
       _$AffirmationCopyWithImpl<$Res, Affirmation>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int id, @JsonKey(name: 'advice') String text});
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'advice') @HiveField(1) String text});
 }
 
 /// @nodoc
@@ -79,7 +82,8 @@ abstract class _$$_AffirmationCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int id, @JsonKey(name: 'advice') String text});
+      {@JsonKey(name: 'id') @HiveField(0) int id,
+      @JsonKey(name: 'advice') @HiveField(1) String text});
 }
 
 /// @nodoc
@@ -111,19 +115,23 @@ class __$$_AffirmationCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Affirmation implements _Affirmation {
+@HiveType(typeId: 0, adapterName: 'AffirmationAdapter')
+class _$_Affirmation extends _Affirmation {
   _$_Affirmation(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'advice') required this.text});
+      {@JsonKey(name: 'id') @HiveField(0) required this.id,
+      @JsonKey(name: 'advice') @HiveField(1) required this.text})
+      : super._();
 
   factory _$_Affirmation.fromJson(Map<String, dynamic> json) =>
       _$$_AffirmationFromJson(json);
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   final int id;
   @override
   @JsonKey(name: 'advice')
+  @HiveField(1)
   final String text;
 
   @override
@@ -158,19 +166,23 @@ class _$_Affirmation implements _Affirmation {
   }
 }
 
-abstract class _Affirmation implements Affirmation {
+abstract class _Affirmation extends Affirmation {
   factory _Affirmation(
-      {@JsonKey(name: 'id') required final int id,
-      @JsonKey(name: 'advice') required final String text}) = _$_Affirmation;
+          {@JsonKey(name: 'id') @HiveField(0) required final int id,
+          @JsonKey(name: 'advice') @HiveField(1) required final String text}) =
+      _$_Affirmation;
+  _Affirmation._() : super._();
 
   factory _Affirmation.fromJson(Map<String, dynamic> json) =
       _$_Affirmation.fromJson;
 
   @override
   @JsonKey(name: 'id')
+  @HiveField(0)
   int get id;
   @override
   @JsonKey(name: 'advice')
+  @HiveField(1)
   String get text;
   @override
   @JsonKey(ignore: true)

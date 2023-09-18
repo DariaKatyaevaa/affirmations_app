@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:affirmations_app/services/storage/storage_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:affirmations_app/models/api_error/api_error.dart';
@@ -113,9 +114,10 @@ class DioService {
 
         response.headers.forEach((name, values) async {
           if (name == 'Authorization') {
-            await _storageService.setValue(
+            await _storageService.set(
               key: 'token',
               data: values.first,
+              boxName: StorageBoxNames.settingsBox,
             );
           }
         });
