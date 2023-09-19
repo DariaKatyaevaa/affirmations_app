@@ -193,7 +193,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void validateEmail(String val) {
-    print(val);
     if (val.isEmpty) {
       setState(() {
         _errorMessage = "Email can not be empty";
