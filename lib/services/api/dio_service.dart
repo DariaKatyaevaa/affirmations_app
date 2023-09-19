@@ -16,11 +16,6 @@ enum HttpMethod {
 class DioService {
   DioService(this.ref) {
     dio = Dio();
-
-    // dio.interceptors.add(LogInterceptor(
-    //   requestBody: true,
-    //   responseBody: true,
-    // ));
   }
 
   final ProviderRef ref;

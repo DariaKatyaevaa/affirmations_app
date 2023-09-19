@@ -22,6 +22,14 @@
   "add": "Добавить",
   "cancel": "Отменить",
   "save": "Сохранить",
-  "enterYourAffirmation": "Введите свою аффирмацию:"
-}
+  "enterYourAffirmation": "Введите свою аффирмацию:",
+  "login": "Войти",
+  "submit": "Отправить",
+  "logout": "Выйти из аккаунта",
+  "password": "Пароль",
+  "email": "Почта",
+  "signup": "Регистрация",
+  "dontHaveAccount" : "Ещё нет аккаунта?",
+  "register": "Зарегистрироваться",
+  "alreadyHaveAccount" : "Уже есть аккаунт?"
 }

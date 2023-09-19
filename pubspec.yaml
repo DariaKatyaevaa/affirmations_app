@@ -33,7 +33,6 @@ dependencies:
 
   # UI
   flutter_screenutil: ^5.9.0
-  google_fonts: ^5.1.0
   easy_localization: ^3.0.3
   flutter_svg: ^2.0.7
   cupertino_icons: ^1.0.6
@@ -49,9 +48,7 @@ dependencies:
   # Firebase
   firebase_core: ^2.15.1
   firebase_auth: ^4.9.0
-  google_sign_in: ^6.1.5
-
-
+  email_validator: ^2.1.17
 
 dev_dependencies:
   flutter_test:

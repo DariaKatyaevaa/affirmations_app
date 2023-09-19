@@ -1,13 +1,18 @@
+import 'package:affirmations_app/providers/services_providers.dart';
 import 'package:affirmations_app/ui/pages/favorites/favorites_page.dart';
+import 'package:affirmations_app/ui/shared_widgets/custom_button.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:affirmations_app/ui/pages/auth/auth_page.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends ConsumerWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final auth = ref.read(authServiceProvider);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -18,33 +23,62 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.transparent,
       ),
       extendBodyBehindAppBar: true,
-      //backgroundColor: Colors.white,
-      body: CupertinoListSection.insetGrouped(
-        header: Container(
-            padding: EdgeInsets.only(top: 100),
-            child: const Text(
-              '',
-              style: TextStyle(fontSize: 32),
-            )),
-        children: <CupertinoListTile>[
-          CupertinoListTile.notched(
-            title: Text('favoriteAffirmations'.tr()),
-            leading: Icon(CupertinoIcons.heart),
-            trailing: const CupertinoListTileChevron(),
-            onTap: () => _goToFavorites(context, FavoritesType.affirmations),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          CupertinoListSection.insetGrouped(
+            header: Container(
+                padding: EdgeInsets.only(top: 100.0, bottom: auth.currentUser != null ? 20.0 : 0),
+                child: Text(
+                  auth.currentUser != null ? 'email: ${auth.currentUser!.email}' : '',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    // color: Colors.grey,
+                    fontWeight: FontWeight.normal,
+                  ),
+                )),
+            children: <CupertinoListTile>[
+              CupertinoListTile.notched(
+                title: Text('favoriteAffirmations'.tr()),
+                leading: Icon(CupertinoIcons.heart),
+                trailing: const CupertinoListTileChevron(),
+                onTap: () => _goToFavorites(context, FavoritesType.affirmations),
+              ),
+              CupertinoListTile.notched(
+                title: Text('favoriteQuotes'.tr()),
+                leading: Icon(CupertinoIcons.bookmark),
+                trailing: const CupertinoListTileChevron(),
+                onTap: () => _goToFavorites(context, FavoritesType.quotes),
+              ),
+              CupertinoListTile.notched(
+                title: Text('myAffirmations'.tr()),
+                leading: Icon(CupertinoIcons.smiley),
+                trailing: const CupertinoListTileChevron(),
+                onTap: () => _goToFavorites(context, FavoritesType.user),
+              ),
+            ],
           ),
-          CupertinoListTile.notched(
-            title: Text('favoriteQuotes'.tr()),
-            leading: Icon(CupertinoIcons.bookmark),
-            trailing: const CupertinoListTileChevron(),
-            onTap: () => _goToFavorites(context, FavoritesType.quotes),
-          ),
-          CupertinoListTile.notched(
-            title: Text('myAffirmations'.tr()),
-            leading: Icon(CupertinoIcons.smiley),
-            trailing: const CupertinoListTileChevron(),
-            onTap: () => _goToFavorites(context, FavoritesType.user),
-          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              SafeArea(
+                child: CustomButton(
+                  onPressed: () async {
+                    await auth.signOut();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AuthPage(),
+                      ),
+                    );
+                  },
+                  buttonText: 'logout'.tr(),
+                ),
+              )
+            ],
+          )
         ],
       ),
     );

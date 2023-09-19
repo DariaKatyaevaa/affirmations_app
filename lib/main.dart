@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'firebase_options.dart';
 import 'providers/locale_provider.dart';
 import 'providers/services_providers.dart';
 import 'router/app_router.dart';
@@ -16,6 +18,8 @@ Future<void> main() async {
   final hiveStorageService = HiveStorageService();
   await hiveStorageService.init();
 
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
+
   final deviceInfoService = DeviceInfoService();
   await deviceInfoService.initProperInfo();
 
@@ -26,7 +30,7 @@ Future<void> main() async {
         deviceInfoServiceProvider.overrideWithValue(deviceInfoService),
       ],
       child: EasyLocalization(
-        supportedLocales: const [Locale('en'), Locale('ru')],
+        supportedLocales: const [Locale('en')], //const [Locale('en'), Locale('ru')],
         path: 'assets/translations',
         useOnlyLangCode: true,
         fallbackLocale: const Locale('en'),

@@ -22,5 +22,14 @@
   "add": "add",
   "cancel": "Cancel",
   "save": "Save",
-  "enterYourAffirmation": "Enter your affirmation:"
+  "enterYourAffirmation": "Enter your affirmation:",
+  "login": "Log In",
+  "submit": "Submit",
+  "logout": "Log Out",
+  "password": "Password",
+  "email": "Email",
+  "signup": "Sign Up",
+  "dontHaveAccount" : "Don't have an account?",
+  "register": "Register",
+  "alreadyHaveAccount" : "Already have an account?"
 }
