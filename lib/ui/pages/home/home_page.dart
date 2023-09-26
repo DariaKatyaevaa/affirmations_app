@@ -1,6 +1,6 @@
+import 'package:affirmations_app/providers/services_providers.dart';
 import 'package:affirmations_app/providers/settings_providers.dart';
 import 'package:affirmations_app/router/route_names.dart';
-import 'package:affirmations_app/router/route_paths.dart';
 import 'package:affirmations_app/ui/pages/home/widgets/sound_widget.dart';
 import 'package:affirmations_app/ui/pages/home/widgets/category_bottom_sheet.dart';
 import 'package:affirmations_app/ui/pages/home/widgets/custom_icon_button.dart';
@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:affirmations_app/ui/pages/home/widgets/main_text_page_view.dart';
+import 'package:screenshot/screenshot.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,20 +20,27 @@ class HomePage extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Consumer(
-            builder: (context, ref, _) {
-              final themeType = ref.watch(themeTypeProvider);
-              return Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(themeType.toAsset()),
-                    fit: BoxFit.cover,
+          Consumer(builder: (context, ref, _) {
+            final themeType = ref.watch(themeTypeProvider);
+            final screenshotShareService = ref.read(screenshotShareServiceProvider);
+            return Screenshot(
+              controller: screenshotShareService.screenshotController,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(themeType.toAsset()),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                ),
-              );
-            },
-          ),
-          MainTextPageView(),
+                  MainTextPageView(),
+                ],
+              ),
+            );
+          }),
           SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

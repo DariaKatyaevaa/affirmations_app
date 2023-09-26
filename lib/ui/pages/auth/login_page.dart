@@ -1,9 +1,11 @@
 import 'package:affirmations_app/providers/services_providers.dart';
+import 'package:affirmations_app/router/route_names.dart';
 import 'package:affirmations_app/ui/pages/home/home_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:affirmations_app/models/theme_type/theme_type.dart';
 import 'package:affirmations_app/ui/shared_widgets/custom_button.dart';
@@ -170,12 +172,7 @@ class _LoginPageState extends State<LoginPage> {
         email: emailController.text,
         password: passwordController.text,
       );
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomePage(),
-        ),
-      );
+      context.goNamed(RouteNames.home);
     } on FirebaseAuthException catch (e) {
       showErrorMessage(e.code);
     }

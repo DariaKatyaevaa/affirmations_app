@@ -6,13 +6,16 @@ import 'package:affirmations_app/services/api/dio_service.dart';
 import 'package:affirmations_app/services/device_info/device_info_service.dart';
 import 'package:affirmations_app/services/storage/hive_storage_service.dart';
 import 'package:affirmations_app/services/storage/storage_service.dart';
+import 'package:affirmations_app/services/screenshot_share/screenshot_share_service.dart';
 
 final storageServiceProvider = Provider<StorageService>((_) => HiveStorageService());
 
-final dioServiceProvider = Provider<DioService>((ref) => DioService(ref));
+final dioServiceProvider = Provider<DioService>((_) => DioService(_));
 
-final deviceInfoServiceProvider = Provider<DeviceInfoService>((ref) => DeviceInfoService());
+final deviceInfoServiceProvider = Provider<DeviceInfoService>((_) => DeviceInfoService());
 
-final audioPlayerServiceProvider = Provider<AudioPlayerService>((ref) => AudioPlayerService());
+final audioPlayerServiceProvider = Provider<AudioPlayerService>((_) => AudioPlayerService());
 
-final authServiceProvider = Provider<FirebaseAuthService>((ref) => FirebaseAuthService(FirebaseAuth.instance, ref));
+final authServiceProvider = Provider<FirebaseAuthService>((_) => FirebaseAuthService(FirebaseAuth.instance, _));
+
+final screenshotShareServiceProvider = Provider<ScreenshotShareService>((_) => ScreenshotShareService());

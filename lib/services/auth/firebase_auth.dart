@@ -10,6 +10,8 @@ class FirebaseAuthService {
 
   User? get currentUser => _auth.currentUser;
 
+  bool get isSignIn => _auth.currentUser != null;
+
   Stream<User?> get onAuthStateChanged => _auth.authStateChanges();
 
   Future<User?> signInWithEmailAndPassword({

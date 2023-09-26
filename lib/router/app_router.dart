@@ -30,9 +30,9 @@ class AppRouter {
         debugLogDiagnostics: true,
         redirect: (context, state) {
           final auth = ref.watch(authServiceProvider);
-          if (state.fullPath == RoutePaths.auth && auth.currentUser != null) {
+          if (state.fullPath == RoutePaths.auth && auth.isSignIn) {
             return RoutePaths.home;
-          } else if (state.fullPath == RoutePaths.auth && auth.currentUser == null) {
+          } else if (state.fullPath == RoutePaths.auth && !auth.isSignIn) {
             return RoutePaths.login;
           }
           return null;
@@ -46,7 +46,7 @@ class AppRouter {
           GoRoute(
             path: RoutePaths.home,
             name: RouteNames.home,
-            builder: (context, state) => const HomePage(),
+            builder: (context, state) => HomePage(),
             routes: [
               GoRoute(
                 path: RoutePaths.profile,
