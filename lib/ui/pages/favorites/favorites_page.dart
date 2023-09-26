@@ -26,7 +26,7 @@ enum FavoritesType {
 class FavoritesPage extends StatelessWidget {
   final FavoritesType favoritesType;
 
-  const FavoritesPage({
+  FavoritesPage({
     super.key,
     required this.favoritesType,
   });

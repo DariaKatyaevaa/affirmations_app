@@ -5,13 +5,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+//import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:pull_down_button/pull_down_button.dart';
+//import 'package:screenshot/screenshot.dart';
 
 class AffirmationItem extends ConsumerWidget {
   final Affirmation affirmation;
   final Color textColor;
+  //final ScreenshotController screenshotController = ScreenshotController();
 
-  const AffirmationItem({
+  AffirmationItem({
     required this.affirmation,
     required this.textColor,
   });
@@ -66,8 +69,10 @@ class AffirmationItem extends ConsumerWidget {
                     itemBuilder: (context) => [
                       PullDownMenuItem(
                         title: 'share'.tr(),
-                        onTap: () {
-                          //todo
+                        onTap: () async {
+                          // await screenshotController.captureFromWidget(HomePage()).then((value) async {
+                          //   await ImageGallerySaver.saveImage(value);
+                          // });
                         },
                         icon: CupertinoIcons.arrowshape_turn_up_right,
                       ),

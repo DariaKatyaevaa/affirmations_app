@@ -1,11 +1,15 @@
 import 'package:affirmations_app/providers/services_providers.dart';
+import 'package:affirmations_app/router/route_names.dart';
+import 'package:affirmations_app/router/route_paths.dart';
 import 'package:affirmations_app/ui/pages/favorites/favorites_page.dart';
 import 'package:affirmations_app/ui/shared_widgets/custom_button.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:affirmations_app/ui/pages/auth/auth_page.dart';
+
+import '../../../router/app_router.dart';
 
 class ProfilePage extends ConsumerWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -29,12 +33,14 @@ class ProfilePage extends ConsumerWidget {
           CupertinoListSection.insetGrouped(
             header: Container(
                 padding: EdgeInsets.only(top: 100.0, bottom: auth.currentUser != null ? 20.0 : 0),
-                child: Text(
-                  auth.currentUser != null ? 'email: ${auth.currentUser!.email}' : '',
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    // color: Colors.grey,
-                    fontWeight: FontWeight.normal,
+                child: Center(
+                  child: Text(
+                    auth.currentUser != null ? '${auth.currentUser!.email}' : '',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      // color: Colors.grey,
+                      fontWeight: FontWeight.normal,
+                    ),
                   ),
                 )),
             children: <CupertinoListTile>[
@@ -67,12 +73,7 @@ class ProfilePage extends ConsumerWidget {
                 child: CustomButton(
                   onPressed: () async {
                     await auth.signOut();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const AuthPage(),
-                      ),
-                    );
+                    context.go(RoutePaths.auth);
                   },
                   buttonText: 'logout'.tr(),
                 ),
@@ -84,11 +85,8 @@ class ProfilePage extends ConsumerWidget {
     );
   }
 
-  void _goToFavorites(BuildContext context, FavoritesType type) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (BuildContext context) => FavoritesPage(favoritesType: type),
-      ),
-    );
-  }
+  void _goToFavorites(BuildContext context, FavoritesType type) => context.pushNamed(
+        RouteNames.favorites,
+        extra: type,
+      );
 }

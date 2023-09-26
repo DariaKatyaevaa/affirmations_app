@@ -1,9 +1,12 @@
+import 'package:affirmations_app/providers/services_providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class FirebaseAuthService {
   final FirebaseAuth _auth;
+  final ProviderRef _ref;
 
-  FirebaseAuthService(this._auth);
+  FirebaseAuthService(this._auth, this._ref);
 
   User? get currentUser => _auth.currentUser;
 
@@ -43,5 +46,6 @@ class FirebaseAuthService {
 
   Future<void> signOut() async {
     await _auth.signOut();
+    await _ref.read(storageServiceProvider).clear();
   }
 }

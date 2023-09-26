@@ -5,11 +5,10 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../../models/theme_type/theme_type.dart';
-import '../../shared_widgets/custom_button.dart';
-import '../../shared_widgets/custom_text_field.dart';
-import 'sign_up_page.dart';
+import 'package:affirmations_app/models/theme_type/theme_type.dart';
+import 'package:affirmations_app/ui/shared_widgets/custom_button.dart';
+import 'package:affirmations_app/ui/shared_widgets/custom_text_field.dart';
+import 'package:affirmations_app/ui/pages/auth/sign_up_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

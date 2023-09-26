@@ -15,4 +15,4 @@ final deviceInfoServiceProvider = Provider<DeviceInfoService>((ref) => DeviceInf
 
 final audioPlayerServiceProvider = Provider<AudioPlayerService>((ref) => AudioPlayerService());
 
-final authServiceProvider = Provider<FirebaseAuthService>((ref) => FirebaseAuthService(FirebaseAuth.instance));
+final authServiceProvider = Provider<FirebaseAuthService>((ref) => FirebaseAuthService(FirebaseAuth.instance, ref));

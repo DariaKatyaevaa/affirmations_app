@@ -1,10 +1,12 @@
 import 'package:affirmations_app/providers/settings_providers.dart';
+import 'package:affirmations_app/router/route_names.dart';
+import 'package:affirmations_app/router/route_paths.dart';
 import 'package:affirmations_app/ui/pages/home/widgets/sound_widget.dart';
-import 'package:affirmations_app/ui/pages/profile/profile_page.dart';
 import 'package:affirmations_app/ui/pages/home/widgets/category_bottom_sheet.dart';
 import 'package:affirmations_app/ui/pages/home/widgets/custom_icon_button.dart';
 import 'package:affirmations_app/ui/pages/home/widgets/theme_bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:affirmations_app/ui/pages/home/widgets/main_text_page_view.dart';
 
@@ -43,7 +45,7 @@ class HomePage extends StatelessWidget {
                       children: [
                         SizedBox(width: 20.0),
                         CustomIconButton(
-                          onTap: () => _goToProfilePage(context),
+                          onTap: () => context.goNamed(RouteNames.profile),
                           iconData: Icons.account_circle_rounded,
                         ),
                         SizedBox(width: 10.0),
@@ -100,12 +102,4 @@ class HomePage extends StatelessWidget {
         isScrollControlled: true,
         builder: (context) => ThemeBottomSheet(),
       );
-
-  void _goToProfilePage(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (BuildContext context) => const ProfilePage(),
-      ),
-    );
-  }
 }
