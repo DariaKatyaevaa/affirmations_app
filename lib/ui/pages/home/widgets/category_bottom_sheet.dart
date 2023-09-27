@@ -40,8 +40,8 @@ class _CategoryBottomSheetState extends State<CategoryBottomSheet> {
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
       expand: false,
-      maxChildSize: 0.3,
-      initialChildSize: 0.3,
+      maxChildSize: 0.35,
+      initialChildSize: 0.31,
       builder: (context, c) => Column(
         children: [
           SizedBox(height: 30),

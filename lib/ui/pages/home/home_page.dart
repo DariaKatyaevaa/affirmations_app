@@ -41,45 +41,48 @@ class HomePage extends StatelessWidget {
               ),
             );
           }),
-          SafeArea(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        SizedBox(width: 20.0),
-                        CustomIconButton(
-                          onTap: () => context.goNamed(RouteNames.profile),
-                          iconData: Icons.account_circle_rounded,
-                        ),
-                        SizedBox(width: 10.0),
-                        CustomIconButton(
-                          onTap: () => _showThemeBottomSheet(context),
-                          iconData: Icons.palette_rounded,
-                        ),
-                      ],
-                    ),
-                    SoundWidget(),
-                  ],
-                ),
-                Row(
-                  children: [
-                    SizedBox(width: 20.0),
-                    Consumer(
-                      builder: (context, ref, _) {
-                        return CustomIconButton(
-                          onTap: () => _showCategoryBottomSheet(context, ref),
-                          iconData: Icons.interests_rounded,
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ],
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: SafeArea(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(width: 20.0),
+                          CustomIconButton(
+                            onTap: () => context.goNamed(RouteNames.profile),
+                            iconData: Icons.account_circle_rounded,
+                          ),
+                          SizedBox(width: 10.0),
+                          CustomIconButton(
+                            onTap: () => _showThemeBottomSheet(context),
+                            iconData: Icons.palette_rounded,
+                          ),
+                        ],
+                      ),
+                      SoundWidget(),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(width: 20.0),
+                      Consumer(
+                        builder: (context, ref, _) {
+                          return CustomIconButton(
+                            onTap: () => _showCategoryBottomSheet(context, ref),
+                            iconData: Icons.interests_rounded,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ],
