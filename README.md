@@ -1,16 +1,18 @@
-# affirmations_app
+# Affirmations app
 
-A new Flutter project.
+Get it on [Play Store](https://play.google.com/store/apps/details?id=com.elfindaria.affirmations').
 
-## Getting Started
+## Previews
 
-This project is a starting point for a Flutter application.
+<img src="/preview/0.png" width="30%"> <img src="/preview/1.png" width="30%"> <img src="/preview/2.png" width="30%">
+<img src="/preview/3.png" width="30%"> <img src="/preview/4.png" width="30%"> <img src="/preview/5.png" width="30%">
 
-A few resources to get you started if this is your first Flutter project:
+<br/>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Description
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<br/>
+A affirmations application using Flutter, Forismatic API, to show affirmations and quotes, and 
+authentication by Firebase.The app using clean architecture with Riverpod, Hive for local storage. 
+In the application user can select the type of affirmation. Users can add affirmations to favorites,
+share them and save to gallery. There is also the opportunity to choose a design and turn on relaxing music.
